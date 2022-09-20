@@ -1,0 +1,6 @@
+<robot name="my_box" xmlns:xacro="http://wiki.ros.org/xacro">    
+    
+    <xacro:include filename="gazebo/car_head.urdf.xacro" />
+    <xacro:include filename="gazebo/box_base.urdf.xacro" />
+
+</robot>

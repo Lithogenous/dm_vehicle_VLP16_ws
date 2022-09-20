@@ -1,0 +1,19 @@
+<launch>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(find dm_vehicle_vlp16)/urdf/my_car.urdf.xacro" />
+    <param name="robot_description1" command="$(find xacro)/xacro $(find dm_vehicle_vlp16)/urdf/box.urdf.xacro" />
+
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find dm_vehicle_vlp16)/world/example.world" />
+    </include>
+    
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find dm_vehicle_vlp16)/config/show.rviz" />
+
+
+
+    <node pkg="gazebo_ros" type="spawn_model" name="model" respawn="false" args="-urdf -model mycar -param robot_description"  />
+    <node pkg="gazebo_ros" type="spawn_model" name="model1" respawn="false" args="-urdf -model mybox -param robot_description1"  />
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+
+</launch>
